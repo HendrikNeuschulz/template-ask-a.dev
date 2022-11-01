@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import AddQuestionOrAnswer from '../components/AddQuestionOrAnswer'
 
 function LandingPage() {
   return (
@@ -13,6 +14,7 @@ function LandingPage() {
           stealthy and hidden.
         </p>
         <aside className="ninja">{"Like a freakin' ninja!"}</aside>
+        <AddQuestionOrAnswer />
       </section>
     </>
   )
