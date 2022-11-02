@@ -7,8 +7,6 @@ const apiQuestion = '/api/questions'
 function ShowQuestion() {
   const { data, error } = useSWR(apiQuestion, fetcher)
 
-  console.log(data)
-
   if (error) {
     return 'ERROR!!!'
   }
