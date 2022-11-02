@@ -1,7 +1,7 @@
 import React from 'react'
 import useSWR from 'swr'
 import { fetcher } from '../helpers/api'
-import { hostname } from '../helpers/api'
+import Link from 'next/link'
 
 const apiQuestion = '/api/questions'
 function ShowQuestion() {
@@ -16,10 +16,17 @@ function ShowQuestion() {
   return (
     <>
       <ul>
-        {data.map((question) => {
+        {data?.map((question) => {
           return (
             <>
-              <li>{question.question}</li>
+              <li>
+                <Link
+                  key={question.id}
+                  href={`/questions/${question.id}`}
+                >
+                  {question.question}
+                </Link>
+              </li>
             </>
           )
         })}
