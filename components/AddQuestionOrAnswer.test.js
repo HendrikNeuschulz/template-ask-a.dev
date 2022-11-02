@@ -66,4 +66,22 @@ describe('AddQuestionOrAnswer', () => {
     expect(fn).toHaveBeenCalledTimes(1)
     expect(fn).toHaveBeenCalledWith(question)
   })
+
+  it('check chars left', async () => {
+    //given
+    render(<AddQuestionOrAnswer />)
+
+    //when
+    const expandButton = screen.getByText('+')
+    await userEvent.click(expandButton)
+    const textArea = screen.getByLabelText(/write your post here/i)
+    // because of form validation it is not possible to add more than the max length. After reaching the max length the string will be cut
+    const question = ''
+    await userEvent.type(textArea, question)
+
+    console.log(textArea.maxLength)
+    console.log(textArea.value.length)
+    //then
+    expect(textArea.value.length).toBeLessThanOrEqual(textArea.maxLength)
+  })
 })
